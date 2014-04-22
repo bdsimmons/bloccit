@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @topic = Topic.find(params[:topic_id])
-    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
+    @post = current_user.posts.build(post_params)
     @post.topic = @topic
 
     authorize @post
@@ -41,5 +41,9 @@ class PostsController < ApplicationController
       flash[:error] = "There was an error saving the post. Please try again."
       render :new
     end
+  end
+
+  def post_params
+    params.require(:post).premit(:title, :body)
   end
 end

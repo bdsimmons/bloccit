@@ -43,8 +43,8 @@ end
 admin = User.new(
   name: 'Admin User',
   email: 'admin@example.com', 
-  password: 'trinity', 
-  password_confirmation: 'trinity')
+  password: 'trinityis', 
+  password_confirmation: 'trinityis')
 admin.skip_confirmation!
 admin.save
 admin.update_attribute(:role, 'admin')
@@ -53,20 +53,25 @@ admin.update_attribute(:role, 'admin')
 moderator = User.new(
   name: 'Moderator User',
   email: 'moderator@example.com', 
-  password: 'trinity', 
-  password_confirmation: 'trinity')
+  password: 'trinityis', 
+  password_confirmation: 'trinityis')
 moderator.skip_confirmation!
 moderator.save
 moderator.update_attribute(:role, 'moderator')
 
 # Create a member
+puts ">>> getting ready to create member"
 member = User.new(
   name: 'Member User',
   email: 'member@example.com', 
-  password: 'trinity', 
-  password_confirmation: 'trinity')
+  password: 'trinityis', 
+  password_confirmation: 'trinityis')
 member.skip_confirmation!
-member.save
+if member.save
+  puts ">>> member created"
+else
+  puts ">>>>> #{member.errors.inspect}"
+end
 
 puts "Seed finished"
 puts "#{User.count} users created"
