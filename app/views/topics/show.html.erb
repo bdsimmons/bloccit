@@ -16,6 +16,7 @@
              <small>
               <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
               submitted <%= time_ago_in_words(post.created_at) %> ago by 
+              <%= image_tag(post.image.thumb.url) if post.image? %>
               <%= post.user.name %><br/>
               <%= post.comments.count %> Comments
             </small>
