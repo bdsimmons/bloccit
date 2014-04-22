@@ -25,7 +25,7 @@ end
   # The `skip_confirmation!` method sets the confirmation date
   # to avoid sending an email. The `save` method updates the database.
 
-  5.times do
+  50.times do
     topic = topics.first
     post = Post.create(
       user: user,
@@ -60,18 +60,22 @@ moderator.save
 moderator.update_attribute(:role, 'moderator')
 
 # Create a member
-puts ">>> getting ready to create member"
 member = User.new(
   name: 'Member User',
   email: 'member@example.com', 
   password: 'trinityis', 
   password_confirmation: 'trinityis')
 member.skip_confirmation!
-if member.save
-  puts ">>> member created"
-else
-  puts ">>>>> #{member.errors.inspect}"
-end
+member.save
+
+# Create Personal Account
+me = User.new(
+  name: 'Ben Simmons',
+  email: ENV['MY_EMAIL'],
+  password: ENV['MY_PASSWORD'],
+  password_confirmation: ENV['MY_PASSWORD'])
+me.skip_confirmation!
+me.save
 
 puts "Seed finished"
 puts "#{User.count} users created"
