@@ -36,6 +36,14 @@ end
     post.update_attribute(:created_at, Time.now - rand(600..31536000))
 
     topics.rotate!
+
+    15.times do
+      comment = Comment.create(
+        user: user,
+        post: post,
+        body: Faker::Lorem.paragraph)
+      comment.update_attribute(:created_at, Time.now - rand(600..31536000))
+    end
   end
 end
 
