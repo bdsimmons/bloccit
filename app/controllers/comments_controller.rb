@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @post = @topic.posts.find(params[:post_id])
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
-    Rails.logger.info ">>>>>>>>>>>>>>>> #{@comment.inspect}"
+
     if @comment.save
       redirect_to [@topic, @post], notice: "Comment was saved successfully."
     else
