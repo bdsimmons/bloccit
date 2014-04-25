@@ -22,6 +22,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'faker'
 gem 'devise'
