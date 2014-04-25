@@ -27,7 +27,14 @@
     </div>
     <%= render partial: 'favorites/favorite', locals: { topic: @topic, post: @post } %>
   </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-md-8">
+
+  <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
 
   <%= render partial: 'comments/comment', collection: @comments %>
   <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment }%>
+  </div>
 </div>
