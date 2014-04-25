@@ -11,7 +11,7 @@ Bloccit::Application.routes.draw do
     end
   end
 
-  resources :users, only: [:update]
+  resources :users, only: [:show, :update]
 
   get 'about' => "welcome#about"
 
